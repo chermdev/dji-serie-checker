@@ -1,40 +1,31 @@
-import { lazy, Suspense, useCallback, useState } from 'react'
-import { ArrowUpRight, Camera, Search } from 'lucide-react'
-import { Result } from './components/Result'
-import { listedSerials, normalizeSerial, serialSet } from './data/serials'
-
-const CameraScanner = lazy(() =>
-  import('./components/CameraScanner').then((module) => ({ default: module.CameraScanner })),
-)
+import { useLayoutEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ArrowUpRight } from 'lucide-react'
+import { HeroPattern } from './components/HeroPattern'
+import { SerialChecker } from './components/SerialChecker'
 
 export function App() {
-  const [value, setValue] = useState('')
-  const [result, setResult] = useState(null)
-  const [error, setError] = useState('')
-  const [isScanning, setIsScanning] = useState(false)
+  const heroRef = useRef(null)
 
-  const verify = useCallback((rawValue) => {
-    const serial = normalizeSerial(rawValue)
-    setValue(serial)
+  useLayoutEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const animation = gsap.context(() => {
+      gsap.fromTo(
+        '[data-hero-enter]',
+        { opacity: 0, y: reduceMotion ? 0 : 14 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: reduceMotion ? 0.2 : 0.55,
+          stagger: reduceMotion ? 0 : 0.06,
+          ease: 'power3.out',
+          clearProps: 'opacity,transform',
+        },
+      )
+    }, heroRef)
 
-    if (serial.length < 8) {
-      setError('Escribe o escanea un número de serie válido.')
-      setResult(null)
-      return
-    }
-
-    setError('')
-    setResult({
-      serial,
-      type: serialSet.has(serial) ? 'listed' : 'clear',
-    })
-    setIsScanning(false)
+    return () => animation.revert()
   }, [])
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    verify(value)
-  }
 
   return (
     <>
@@ -44,69 +35,22 @@ export function App() {
       </header>
 
       <main id="inicio">
-        <section className="hero" aria-labelledby="page-title">
-          <p className="eyebrow">Consulta independiente · México</p>
-          <h1 id="page-title">Revisa la serie antes de comprar.</h1>
-          <p className="hero__intro">
-            Escanea el código de barras para comprobar si la serie aparece en el listado público.
-          </p>
-        </section>
-
-        <section className="checker" aria-labelledby="checker-title">
-          <div className="section-heading">
-            <div>
-              <p className="step">Consulta</p>
-              <h2 id="checker-title">Número de serie</h2>
+        <section className="hero-stage" ref={heroRef} aria-labelledby="page-title">
+          <HeroPattern hostRef={heroRef} />
+          <div className="hero-grid">
+            <div className="hero">
+              <p className="eyebrow" data-hero-enter>Consulta independiente · México</p>
+              <h1 id="page-title" data-hero-enter>Revisa la serie antes de comprar.</h1>
+              <p className="hero__intro" data-hero-enter>
+                Escanea el código de barras para comprobar si la serie aparece en el listado público.
+              </p>
+              <p className="hero__privacy" data-hero-enter>
+                La consulta ocurre en tu dispositivo. No guardamos la serie ni imágenes de la cámara.
+              </p>
             </div>
-            <span>{listedSerials.length} series en la lista</span>
+
+            <SerialChecker />
           </div>
-
-          <button
-            className="camera-trigger"
-            type="button"
-            onClick={() => setIsScanning(true)}
-          >
-            <span><Camera size={20} /> Escanear con cámara</span>
-            <span className="camera-trigger__hint">Apunta al código de barras</span>
-          </button>
-
-          {isScanning && (
-            <Suspense fallback={<p className="scanner-loading" role="status">Preparando cámara…</p>}>
-              <CameraScanner onScan={verify} onClose={() => setIsScanning(false)} />
-            </Suspense>
-          )}
-
-          <div className="manual-divider"><span>O escribe la serie</span></div>
-
-          <form className="serial-form" onSubmit={handleSubmit} noValidate>
-            <label htmlFor="serial">Serie del producto</label>
-            <div className="input-row">
-              <input
-                id="serial"
-                name="serial"
-                type="text"
-                value={value}
-                onChange={(event) => {
-                  setValue(event.target.value.toUpperCase())
-                  setError('')
-                }}
-                placeholder="Ej. ANG5P5D001L06P"
-                autoComplete="off"
-                autoCapitalize="characters"
-                spellCheck="false"
-                aria-describedby={error ? 'serial-error' : 'serial-help'}
-              />
-              <button className="button button--primary" type="submit">
-                <Search size={17} /> Verificar
-              </button>
-            </div>
-            <div className="form-meta">
-              <p id="serial-help">La consulta ocurre en tu dispositivo. No guardamos la serie.</p>
-            </div>
-            {error && <p className="form-error" id="serial-error" role="alert">{error}</p>}
-          </form>
-
-          <Result result={result} />
         </section>
 
         <section className="source-section" id="fuente" aria-labelledby="source-title">
