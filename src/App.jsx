@@ -48,7 +48,7 @@ export function App() {
           <p className="eyebrow">Consulta independiente · México</p>
           <h1 id="page-title">Revisa la serie antes de comprar.</h1>
           <p className="hero__intro">
-            Escanea el código de barras o escribe la serie para comprobar si aparece en el listado público de productos reportados como robados.
+            Escanea el código de barras para comprobar si la serie aparece en el listado público.
           </p>
         </section>
 
@@ -60,6 +60,23 @@ export function App() {
             </div>
             <span>{listedSerials.length} series en la lista</span>
           </div>
+
+          <button
+            className="camera-trigger"
+            type="button"
+            onClick={() => setIsScanning(true)}
+          >
+            <span><Camera size={20} /> Escanear con cámara</span>
+            <span className="camera-trigger__hint">Apunta al código de barras</span>
+          </button>
+
+          {isScanning && (
+            <Suspense fallback={<p className="scanner-loading" role="status">Preparando cámara…</p>}>
+              <CameraScanner onScan={verify} onClose={() => setIsScanning(false)} />
+            </Suspense>
+          )}
+
+          <div className="manual-divider"><span>O escribe la serie</span></div>
 
           <form className="serial-form" onSubmit={handleSubmit} noValidate>
             <label htmlFor="serial">Serie del producto</label>
@@ -85,24 +102,37 @@ export function App() {
             </div>
             <div className="form-meta">
               <p id="serial-help">La consulta ocurre en tu dispositivo. No guardamos la serie.</p>
-              <button
-                className="camera-trigger"
-                type="button"
-                onClick={() => setIsScanning(true)}
-              >
-                <Camera size={17} /> Escanear con cámara
-              </button>
             </div>
             {error && <p className="form-error" id="serial-error" role="alert">{error}</p>}
           </form>
 
-          {isScanning && (
-            <Suspense fallback={<p className="scanner-loading" role="status">Preparando cámara…</p>}>
-              <CameraScanner onScan={verify} onClose={() => setIsScanning(false)} />
-            </Suspense>
-          )}
-
           <Result result={result} />
+        </section>
+
+        <section className="source-section" id="fuente" aria-labelledby="source-title">
+          <div className="section-heading section-heading--source">
+            <div>
+              <p className="step">Fuente visual</p>
+              <h2 id="source-title">Productos involucrados</h2>
+            </div>
+            <a
+              href="/productos-involucrados.webp"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Abrir imagen <ArrowUpRight size={15} />
+            </a>
+          </div>
+          <figure className="source-image">
+            <img
+              src="/productos-involucrados.webp"
+              alt="Imagen pública con seis columnas de números de serie de productos involucrados"
+              loading="lazy"
+            />
+            <figcaption>
+              Imagen proporcionada como referencia. La lista fue transcrita para permitir la consulta.
+            </figcaption>
+          </figure>
         </section>
 
         <section className="context-section" aria-labelledby="context-title">
@@ -137,32 +167,6 @@ export function App() {
               </a>
             </nav>
           </div>
-        </section>
-
-        <section className="source-section" id="fuente" aria-labelledby="source-title">
-          <div className="section-heading section-heading--source">
-            <div>
-              <p className="step">Fuente visual</p>
-              <h2 id="source-title">Productos involucrados</h2>
-            </div>
-            <a
-              href="/productos-involucrados.webp"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Abrir imagen <ArrowUpRight size={15} />
-            </a>
-          </div>
-          <figure className="source-image">
-            <img
-              src="/productos-involucrados.webp"
-              alt="Imagen pública con seis columnas de números de serie de productos involucrados"
-              loading="lazy"
-            />
-            <figcaption>
-              Imagen proporcionada como referencia. La lista fue transcrita para permitir la consulta.
-            </figcaption>
-          </figure>
         </section>
 
         <aside className="notice" aria-labelledby="notice-title">
