@@ -56,9 +56,9 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 .header-link { color: var(--muted); font-size: 13px; text-underline-offset: 4px; }
 
 main {
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 0 24px;
+  margin: 0;
+  max-width: none;
+  padding: 0;
 }
 
 .hero-stage {
@@ -110,8 +110,10 @@ main {
   display: grid;
   gap: clamp(40px, 7vw, 96px);
   grid-template-columns: minmax(0, .85fr) minmax(420px, 1fr);
+  margin: 0 auto;
+  max-width: 1200px;
   min-height: calc(100svh - 57px);
-  padding: 56px 0;
+  padding: 56px 24px;
   position: relative;
   z-index: 1;
 }
@@ -297,7 +299,7 @@ h1 {
 .result--clear { border-top-color: rgba(101, 214, 139, .65); }
 .result--clear svg, .result--clear strong, .result--clear code { color: var(--success); }
 
-.source-section { padding: 88px 0; scroll-margin-top: 24px; }
+.source-section { margin: 0 auto; max-width: 1200px; padding: 88px 24px; scroll-margin-top: 24px; }
 .section-heading--source a { align-items: center; display: inline-flex; font-size: 13px; gap: 5px; text-underline-offset: 4px; }
 .source-image { background: #000000; border: 1px solid var(--line); margin: 40px 0 0; }
 .source-image img { display: block; height: auto; width: 100%; }
@@ -308,7 +310,9 @@ h1 {
   display: grid;
   gap: 48px;
   grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-  padding: 32px 0 88px;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 32px 24px 88px;
 }
 
 .context-copy h2 { font-size: 30px; font-weight: 560; letter-spacing: -.045em; line-height: 1.08; margin: 0; max-width: 360px; }
@@ -317,7 +321,7 @@ h1 {
 .official-links { border-top: 1px solid var(--line); display: grid; margin-top: 28px; }
 .official-links a { align-items: center; border-bottom: 1px solid var(--line); display: flex; font-size: 13px; font-weight: 600; justify-content: space-between; min-height: 50px; padding: 0 2px; text-decoration: none; }
 
-.notice { border-top: 1px solid var(--line); display: grid; gap: 24px; grid-template-columns: 1fr 1fr; padding: 32px 0 96px; }
+.notice { border-top: 1px solid var(--line); display: grid; gap: 24px; grid-template-columns: 1fr 1fr; margin: 0 auto; max-width: 1200px; padding: 32px 24px 96px; }
 .notice .step { grid-column: 1 / -1; margin-bottom: 0; }
 .notice p:last-child { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 0; }
 
@@ -342,15 +346,15 @@ footer a { align-items: center; color: var(--ink); display: inline-flex; gap: 5p
 
 @media (max-width: 900px) {
   .hero-stage, .hero-grid { min-height: auto; }
-  .hero-grid { gap: 48px; grid-template-columns: 1fr; padding: 56px 0 72px; }
+  .hero-grid { gap: 48px; grid-template-columns: 1fr; padding: 56px 24px 72px; }
   .hero { max-width: 720px; }
   .checker { max-width: 680px; width: 100%; }
   .hero-pattern__glow { height: 620px; left: 24%; top: 2%; width: 620px; }
 }
 
 @media (max-width: 640px) {
-  .site-header, main, footer { padding-left: 16px; padding-right: 16px; }
-  .hero-grid { gap: 32px; padding: 36px 0 56px; }
+  .site-header, footer { padding-left: 16px; padding-right: 16px; }
+  .hero-grid { gap: 32px; padding: 36px 16px 56px; }
   h1 { font-size: clamp(38px, 12vw, 52px); }
   .hero__intro { margin-top: 18px; }
   .hero__privacy { margin-top: 24px; }
@@ -359,12 +363,12 @@ footer a { align-items: center; color: var(--ink); display: inline-flex; gap: 5p
   .input-row { gap: 8px; grid-template-columns: 1fr; }
   .button { width: 100%; }
   .scanner__viewport { aspect-ratio: 3 / 4; }
-  .source-section { padding: 72px 0; }
+  .source-section { padding: 72px 16px; }
   .source-image { margin-top: 32px; }
   .section-heading--source { align-items: flex-start; flex-direction: column; }
-  .context-section { gap: 32px; grid-template-columns: 1fr; padding-bottom: 72px; }
+  .context-section { gap: 32px; grid-template-columns: 1fr; padding: 32px 16px 72px; }
   .context-copy h2 { font-size: 28px; }
-  .notice { grid-template-columns: 1fr; padding-bottom: 72px; }
+  .notice { grid-template-columns: 1fr; padding: 32px 16px 72px; }
   footer { align-items: flex-start; flex-direction: column; gap: 12px; }
 }
 
