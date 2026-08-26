@@ -11,6 +11,11 @@ npm run dev
 
 La consulta y el escaneo ocurren por completo en el navegador. No se recopilan números de serie ni imágenes de la cámara.
 
+## Publicaciones de referencia
+
+- [Facebook](https://www.facebook.com/share/p/19Uh6uZjeH/)
+- [Instagram](https://www.instagram.com/p/DccyFUBDR-A)
+
 ## Aviso
 
 Este proyecto no está afiliado, patrocinado ni respaldado por DJI o sus distribuidores. El resultado es informativo y no sustituye una validación oficial.

@@ -105,6 +105,40 @@ export function App() {
           <Result result={result} />
         </section>
 
+        <section className="context-section" aria-labelledby="context-title">
+          <div className="context-copy">
+            <p className="step">Contexto</p>
+            <h2 id="context-title">¿Por qué existe esta consulta?</h2>
+          </div>
+          <div className="context-details">
+            <p>
+              DJI Store México informó públicamente sobre el robo de un cargamento con drones,
+              cámaras y accesorios después de su salida del AIFA. También compartió las series
+              involucradas y pidió evitar la compra o comercialización de esos productos.
+            </p>
+            <p>
+              Este sitio convierte ese listado visual en una consulta rápida. Para conocer el
+              comunicado original, revisa las publicaciones compartidas por DJI Store México.
+            </p>
+            <nav className="official-links" aria-label="Publicaciones oficiales de referencia">
+              <a
+                href="https://www.facebook.com/share/p/19Uh6uZjeH/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Publicación en Facebook <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.instagram.com/p/DccyFUBDR-A"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Publicación en Instagram <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </nav>
+          </div>
+        </section>
+
         <section className="source-section" id="fuente" aria-labelledby="source-title">
           <div className="section-heading section-heading--source">
             <div>
