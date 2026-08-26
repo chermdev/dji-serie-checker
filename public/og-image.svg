@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".055"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".11"/>
+      <stop offset=".45" stop-color="#ffffff" stop-opacity=".025"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fade" x1="0" x2="1">
+      <stop offset="0" stop-color="#080808" stop-opacity=".28"/>
+      <stop offset=".48" stop-color="#080808" stop-opacity="0"/>
+      <stop offset="1" stop-color="#080808" stop-opacity=".2"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#080808"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="820" cy="265" r="360" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#fade)"/>
+
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <text x="72" y="102" fill="#a1a1a1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" letter-spacing="2">CONSULTA INDEPENDIENTE · MÉXICO</text>
+    <text x="68" y="202" fill="#f4f4f4" font-size="66" font-weight="600" letter-spacing="-4">Revisa la serie</text>
+    <text x="68" y="272" fill="#f4f4f4" font-size="66" font-weight="600" letter-spacing="-4">antes de comprar.</text>
+    <text x="72" y="337" fill="#b8b8b8" font-size="22">Escanea el código de barras y comprueba</text>
+    <text x="72" y="369" fill="#b8b8b8" font-size="22">si la serie aparece en el listado público.</text>
+    <path d="M72 421v54" stroke="#343434"/>
+    <text x="88" y="440" fill="#777777" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">LA CONSULTA OCURRE EN TU DISPOSITIVO.</text>
+    <text x="88" y="463" fill="#777777" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">NO GUARDAMOS LA SERIE NI IMÁGENES.</text>
+    <text x="72" y="571" fill="#f4f4f4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700" letter-spacing="2">SERIE / MX</text>
+  </g>
+
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <rect x="790" y="78" width="548" height="520" fill="#0a0a0a" fill-opacity=".94" stroke="#3a3a3a" stroke-width="2"/>
+    <text x="826" y="122" fill="#8a8a8a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="1.5">CONSULTA</text>
+    <text x="826" y="154" fill="#f4f4f4" font-size="25" font-weight="600">Número de serie</text>
+    <text x="1145" y="122" fill="#777777" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">412 SERIES</text>
+
+    <rect x="826" y="184" width="458" height="66" fill="#f4f4f4"/>
+    <path d="M850 208v-7a2 2 0 0 1 2-2h7M871 199h7a2 2 0 0 1 2 2v7M880 221v7a2 2 0 0 1-2 2h-7M859 230h-7a2 2 0 0 1-2-2v-7" fill="none" stroke="#080808" stroke-width="2"/>
+    <text x="896" y="224" fill="#080808" font-size="16" font-weight="700">Escanear con cámara</text>
+    <text x="1132" y="224" fill="#666666" font-size="12">Apunta al código</text>
+
+    <rect x="826" y="270" width="458" height="176" fill="#030303" stroke="#303030"/>
+    <path d="M826 310h458M826 350h458M826 390h458M866 270v176M906 270v176M946 270v176M986 270v176M1026 270v176M1066 270v176M1106 270v176M1146 270v176M1186 270v176M1226 270v176" stroke="#ffffff" stroke-opacity=".035"/>
+    <path d="M870 330v-22h22M1160 308h22v22M1182 386v22h-22M892 408h-22v-22" fill="none" stroke="#f4f4f4" stroke-width="2"/>
+    <path d="M884 358h284" stroke="#65d68b" stroke-width="2"/>
+    <rect x="873" y="322" width="306" height="72" fill="none" stroke="#ffffff" stroke-opacity=".85"/>
+
+    <path d="M826 478h458" stroke="#292929"/>
+    <path d="M826 516h458" stroke="#65d68b" stroke-opacity=".65"/>
+    <path d="m833 550 7 7 15-17" fill="none" stroke="#65d68b" stroke-width="3"/>
+    <text x="872" y="556" fill="#65d68b" font-size="16" font-weight="700">No aparece en este listado</text>
+  </g>
+
+  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="#ffffff" stroke-opacity=".08" stroke-width="2"/>
+</svg>
